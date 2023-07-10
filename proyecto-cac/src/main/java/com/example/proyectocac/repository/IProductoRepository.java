@@ -10,5 +10,4 @@ import java.util.List;
 @Repository
 public interface IProductoRepository extends JpaRepository<Producto, Long> {
 
-   // List<Pedido> findByPublicacionId(long pedidoId);
 }

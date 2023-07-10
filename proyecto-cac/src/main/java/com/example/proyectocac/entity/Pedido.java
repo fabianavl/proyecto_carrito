@@ -27,8 +27,6 @@ public class Pedido {
     private String nombre;
     @Column(name="direccion", nullable = false)
     private String direccion;
-
-    //onetomany
     @JsonBackReference
     @OneToMany(mappedBy="pedido", cascade = CascadeType.ALL)
     private List<Producto> productosLista = new ArrayList<>();

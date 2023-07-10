@@ -19,36 +19,17 @@ public class PedidoController {
     public ResponseEntity<?> listaPedidos() {
         return new ResponseEntity<>(pedidosService.listarPedido(), HttpStatus.OK);
     }
-
-   /* @GetMapping("/productos/{productoId}/pedido/{id}")
-    public ResponseEntity<PedidoDto> obtenerPedidoPorId(@PathVariable Long productoId,
-                                                        @PathVariable Long id) {
-        PedidoDto pedidoDto = pedidosService.obtenerPedidoPorId(productoId, id);
-        return ResponseEntity.ok(pedidoDto);
-    }*/
    @GetMapping("/pedido/{id}")
    public ResponseEntity<PedidoDto> obtenerPedidoPorId(@PathVariable Long id) {
        PedidoDto pedidoDto = pedidosService.obtenerPedidoPorId(id);
        return ResponseEntity.ok(pedidoDto);
    }
-
-   /* @PostMapping("/productos/{productoId}/pedido/nuevo")
-    public ResponseEntity<PedidoDto> crearPedido(@PathVariable Long productoId,
-                                                 @Valid @RequestBody PedidoDto pedidoDto) {
-        return new ResponseEntity<>(pedidosService.agregarPedido(productoId, pedidoDto)
-                , HttpStatus.CREATED);
-    }*/
    @PostMapping("/pedido/nuevo")
    public ResponseEntity<PedidoDto> crearPedido(@Valid @RequestBody PedidoDto pedidoDto) {
        return new ResponseEntity<>(pedidosService.agregarPedido(pedidoDto)
                , HttpStatus.CREATED);
    }
-   /* @DeleteMapping("/productos/{productoId}/eliminar/{id}")
-    public ResponseEntity<Void> eliminarPedido(@PathVariable Long productoId,
-                                               @PathVariable Long id) {
-        pedidosService.eliminarPedido(productoId, id);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }*/
+
    @DeleteMapping("/eliminar/{id}")
    public ResponseEntity<Void> eliminarPedido(@PathVariable Long id) {
        pedidosService.eliminarPedido(id);

@@ -13,7 +13,6 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="productos")
 public class Producto {
-//manytoone list<Pedidos>
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="producto_id", nullable=false)
@@ -40,7 +39,6 @@ public class Producto {
 
     @Column(name="total", nullable = false)
     private double total;
-
     @ManyToOne
     @JoinColumn(name="pedido_id", nullable = false)
     private Pedido pedido;

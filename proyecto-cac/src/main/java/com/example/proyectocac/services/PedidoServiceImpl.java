@@ -22,9 +22,6 @@ public class PedidoServiceImpl implements IPedidoService {
     private ModelMapper modelMapper;
 
     @Autowired
-    private IProductoRepository productosRepository;
-
-    @Autowired
     private IPedidoRepository pedidosRepository;
 
     @Override
@@ -35,39 +32,12 @@ public class PedidoServiceImpl implements IPedidoService {
         return pedidoFinal;
     }
 
-   /* @Override
-    public PedidoDto agregarPedido(Long productoId, PedidoDto pedidoDto) {
-        Pedido pedido = mapearEntidad(pedidoDto);
-        Producto producto = productosRepository.findById(productoId)
-                .orElseThrow(() -> new ResourceNotFoundException("Producto inexistente con id: " + productoId));
-
-        pedido.setProductosLista((List<Producto>) producto);
-
-        Pedido pedidoFinal = pedidosRepository.save(pedido);
-
-        return mapearDTO(pedidoFinal);
-
-    }*/
-
    @Override
     public PedidoDto obtenerPedidoPorId(Long id) {
         Pedido pedido = pedidosRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Pedido inexistente con id: " + id));
         return mapearDTO(pedido);
     }
-
-
-
-   /* @Override
-    public PedidoDto obtenerPedidoPorId(Long productoId, Long id) {
-        Pedido pedido = pedidosRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Pedido inexistente con id: " + id));
-        Producto producto = productosRepository.findById(productoId)
-                .orElseThrow(() -> new ResourceNotFoundException("Producto inexistente con id: " + productoId));
-
-        return mapearDTO(pedido);
-    }*/
-
     @Override
     public List<PedidoDto> listarPedido() {
         List<Pedido> listaPedidos = pedidosRepository.findAll();
@@ -75,15 +45,6 @@ public class PedidoServiceImpl implements IPedidoService {
                 (pedido -> mapearDTO(pedido)).collect(Collectors.toList());
         return pedidoDto;
     }
-
-   /* @Override
-    public void eliminarPedido(Long productoId, Long id) {
-        Pedido pedido = pedidosRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Pedido inexistente con id: " + id));
-        Producto producto = productosRepository.findById(productoId)
-                .orElseThrow(() -> new ResourceNotFoundException("Producto inexistente con id: " + productoId));
-        pedidosRepository.delete(pedido);
-    }*/
 
     @Override
     public void eliminarPedido(Long id) {
