@@ -18,10 +18,10 @@ public class Producto {
     @Column(name="producto_id", nullable=false)
     private int producto_id;
 
-    @Column(name="nombre", nullable=false, length = 30)
+    @Column(name="nombre", nullable=false, length = 100)
     private String nombre;
 
-    @Column(name="categoria", nullable = false, length = 50)
+    @Column(name="categoria", nullable = false, length = 100)
     private String categoria;
 
     @Column(name="descripcion", nullable = false, length = 100)

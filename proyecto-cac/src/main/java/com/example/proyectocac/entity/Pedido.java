@@ -23,9 +23,9 @@ public class Pedido {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name="pedido_id", nullable = false)
     private int pedido_id;
-    @Column(name="nombre", nullable = false)
+    @Column(name="nombre", nullable = false, length = 100)
     private String nombre;
-    @Column(name="direccion", nullable = false)
+    @Column(name="direccion", nullable = false, length = 100)
     private String direccion;
     @JsonBackReference
     @OneToMany(mappedBy="pedido", cascade = CascadeType.ALL)
